@@ -1,0 +1,61 @@
+version: '3.4'
+
+services:
+  web:
+    container_name: email_vault_backend
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env  # Load variables from .env file
+    volumes:
+      - .:/email-vault-backend
+    depends_on:
+      - mysql
+      - rabbitmq
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: email_vault
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3308:3306"
+    networks:
+      - backend
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    env_file:
+      - .env  # Load variables from .env file
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
+    driver: bridge

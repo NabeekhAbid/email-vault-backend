@@ -1,0 +1,7 @@
+.venv/
+.env
+.env.development
+.env.local
+.env.production
+.env.secrets
+

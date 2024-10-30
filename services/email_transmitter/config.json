@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "provider": "mailjet",
+            "sourceEmail": "SecondSight <system@secondsight.ai>",
+            "errorReportingEmail": "system@secondsight.ai"
+        }
+    ],
+    "events": {
+        "USER_CREATED": {
+            "subject": "Welcome {{var:recipient_name}}",
+            "templateName": "Welcome (PROD and TEST)",
+            "id": {
+                "mailjet": 4777555
+            }
+        }
+    }
+}
