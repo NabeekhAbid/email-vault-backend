@@ -1,5 +1,5 @@
 
-# Email-VAULT_BACKEND Backend
+# Email Vault Backend
 
 This project is a backend API built with FastAPI. It includes user authentication (registration, login, email verification, password reset) and supports a relational database using SQLAlchemy.
 
@@ -42,7 +42,7 @@ pip install -r requirements.txt
 
 ### 4. Set up environment variables
 
-<Create a `.env` file in the root directory with the following variables:
+Create a `.env` file in the root directory with the following command:
 
 ```plaintext
 DATABASE_URL="sqlite:///./test.db"    # Or the URL for your PostgreSQL/MySQL database
