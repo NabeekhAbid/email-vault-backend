@@ -1,8 +1,5 @@
-Here's a README template for your FastAPI backend, detailing setup, dependencies, environment variables, and API usage.
 
----
-
-# FastAPI Backend
+# Email-VAULT_BACKEND Backend
 
 This project is a backend API built with FastAPI. It includes user authentication (registration, login, email verification, password reset) and supports a relational database using SQLAlchemy.
 
@@ -26,8 +23,8 @@ This project is a backend API built with FastAPI. It includes user authenticatio
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone git@github.com:NabeekhAbid/email-vault-backend.git
+cd email-vault-backend
 ```
 
 ### 2. Set up a virtual environment
@@ -45,21 +42,21 @@ pip install -r requirements.txt
 
 ### 4. Set up environment variables
 
-Create a `.env` file in the root directory with the following variables:
+<Create a `.env` file in the root directory with the following variables:
 
 ```plaintext
 DATABASE_URL="sqlite:///./test.db"    # Or the URL for your PostgreSQL/MySQL database
 MAILJET_API_KEY="your-mailjet-api-key"
 MAILJET_API_SECRET="your-mailjet-api-secret"
-FRONT_END_BASE_URL="http://localhost:3000"  # Your frontend URL for email verification links
+FRONT_END_BASE_UR>L="http://localhost:3000"  # Your frontend URL for email verification links
 ```
 
 ### 5. Run database migrations
 
-If you’re using Alembic for migrations, apply migrations as follows:
+Rococo for migrations, apply migrations as follows:
 
 ```bash
-alembic upgrade head
+ rococo-mysql --migrations-dir common/migrations --env-files=.env rf
 ```
 
 ### 6. Start the application
