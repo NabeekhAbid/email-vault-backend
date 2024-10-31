@@ -60,7 +60,7 @@ class UserService:
                     "Subject": "Your Verification Email",
                     "TextPart": "Please verify your email",
                     "HTMLPart": f"<h3>Dear {user.email},</h3>"
-                                f"<p>Click the {verification_link} to verify your email.</p>"
+                                f"<p>Click <a href='{verification_link}'>here</a> to verify your email.</p>"
                 }
             ]
         }
@@ -103,7 +103,7 @@ class UserService:
                     "Subject": "Password Reset Request",
                     "TextPart": "Click the link to reset your password.",
                     "HTMLPart": f"<h3>Dear User,</h3>"
-                                f"<p>Click the {reset_link} to reset your password.</p>"
+                                f"<p>Click <a href='{reset_link}'>here</a> to reset your password.</p>"
                 }
             ]
         }
