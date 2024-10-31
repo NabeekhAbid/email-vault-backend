@@ -1,6 +1,6 @@
-# app/migrations/0000000001_create_user_related_tables.py
 revision = "0000000001"
 down_revision = "0000000000"
+
 def upgrade(migration):
     # Create users table
     migration.execute("""
@@ -49,41 +49,23 @@ def upgrade(migration):
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
     """)
-    # Create indices for email column and tokens
-    migration.execute("""
-        CREATE INDEX idx_user_email ON users(email);
-    """)
-    migration.execute("""
-        CREATE INDEX idx_verification_token ON email_verifications(token);
-    """)
-    migration.execute("""
-        CREATE INDEX idx_reset_token ON password_resets(token);
-    """)
+    # Create indices
+    migration.execute("CREATE INDEX idx_user_email ON users(email);")
+    migration.execute("CREATE INDEX idx_verification_token ON email_verifications(token);")
+    migration.execute("CREATE INDEX idx_reset_token ON password_resets(token);")
+
     # Update version table with current migration
     migration.update_version_table(version=revision)
+
 def downgrade(migration):
-    # Drop indices first
+    # Drop indices and tables in reverse order
     migration.execute("DROP INDEX IF EXISTS idx_reset_token ON password_resets;")
     migration.execute("DROP INDEX IF EXISTS idx_verification_token ON email_verifications;")
     migration.execute("DROP INDEX IF EXISTS idx_user_email ON users;")
-    # Drop tables in reverse order
     migration.execute("DROP TABLE IF EXISTS failed_logins;")
     migration.execute("DROP TABLE IF EXISTS password_resets;")
     migration.execute("DROP TABLE IF EXISTS email_verifications;")
     migration.execute("DROP TABLE IF EXISTS users;")
+    
     # Update version table back to previous version
     migration.update_version_table(version=down_revision)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

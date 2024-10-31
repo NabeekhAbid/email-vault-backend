@@ -1,7 +1,4 @@
-# app/schemas/user.py
-
 from pydantic import BaseModel, EmailStr, Field
-from typing import Optional
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -12,7 +9,7 @@ class UserCreate(BaseModel):
     firstName: str
     lastName: str
     companyName: str
-    password: str = Field(..., min_length=8)  # Enforce minimum password length
+    password: str = Field(..., min_length=8)
 
 class UserVerifyEmail(BaseModel):
     token: str
@@ -22,8 +19,7 @@ class UserResetPassword(BaseModel):
     new_password: str = Field(..., min_length=8)
 
 class UserEmail(BaseModel):
-    email: str = Field(..., min_length=8)
-  
+    email: EmailStr
 
 class UserResponse(BaseModel):
     id: int
@@ -31,4 +27,4 @@ class UserResponse(BaseModel):
     is_verified: bool
 
     class Config:
-        orm_mode = True 
+        orm_mode = True
