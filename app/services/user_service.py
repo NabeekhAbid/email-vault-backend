@@ -50,7 +50,7 @@ class UserService:
                         <h2 style="color: #4CAF50;">Welcome to Email Vault, {user.firstName}!</h2>
                         <p>We're thrilled to have you on board. To start exploring, please confirm your email address.</p>
                         <p><a href="{verification_link}" style="display: inline-block; padding: 10px 20px; color: white; background-color: #4CAF50; text-decoration: none; border-radius: 5px;">Verify Email</a></p>
-                        <p style="font-size: 0.9em;">If the button above doesn’t work, copy and paste the following link in your browser: {verification_link}</p>
+                        <p style="font-size: 0.9em;">If the button above doesn’t work, copy and paste the following link in your browser: <a href="{verification_link}" style="color: #4CAF50;">{verification_link}</a></p>
                         <hr style="border: none; border-top: 1px solid #eee;">
                         <p style="font-size: 0.8em;">If you didn’t create an account, please ignore this email.</p>
                     </div>
@@ -93,7 +93,7 @@ class UserService:
                         <p>Hi,</p>
                         <p>We received a request to reset your password. Click the button below to set up a new password:</p>
                         <p><a href="{reset_link}" style="display: inline-block; padding: 10px 20px; color: white; background-color: #FF7043; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
-                        <p style="font-size: 0.9em;">If the button above doesn’t work, copy and paste the following link in your browser: {reset_link}</p>
+                        <p style="font-size: 0.9em;">If the button above doesn’t work, copy and paste the following link in your browser: <a href="{reset_link}" style="color: #FF7043;">{reset_link}</a></p>
                         <hr style="border: none; border-top: 1px solid #eee;">
                         <p style="font-size: 0.8em;">If you didn't request a password reset, you can safely ignore this email.</p>
                     </div>
